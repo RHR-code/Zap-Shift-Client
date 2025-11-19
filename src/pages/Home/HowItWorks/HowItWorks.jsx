@@ -37,7 +37,9 @@ const HowItWorks = () => {
 
   return (
     <div className="md:px-20 px-5 mt-24">
-      <h2 className="font-extrabold text-secondary text-3xl">How It Works</h2>
+      <h2 className="font-extrabold text-secondary text-3xl text-center md:text-start">
+        How It Works
+      </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8">
         {services.map((card) => (
           <div key={card.id} className="p-8 shadow-2xl">

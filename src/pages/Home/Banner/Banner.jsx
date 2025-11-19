@@ -13,19 +13,19 @@ const Banner = () => {
       <Carousel autoPlay={false} infiniteLoop={true}>
         <div className="relative">
           <img src={bannerImg1} />
-          <p className="absolute bottom-20 left-23 text-left max-w-2xl">
+          <p className="absolute md:bottom-20 md:left-23 text-left max-w-2xl  hidden md:flex">
             Enjoy fast, reliable parcel delivery with real-time tracking and
             zero hassle. From personal packages to business shipments — we
             deliver on time, every time.
           </p>
-          <button className="btn btn-primary rounded-full absolute bottom-8 border-2 border-secondary left-23 text-secondary">
+          <button className="btn btn-primary rounded-full absolute md:bottom-8 border-2 border-secondary md:left-23 left-5 text-secondary bottom-0 text-sm">
             Track Your Parcel
           </button>
           <IoArrowUpCircle
-            className="rotate-45 absolute bottom-8 left-62"
+            className="rotate-45 absolute md:bottom-8 bottom-0 md:left-62 left-42"
             size={40}
           />
-          <button className="btn btn-primary border-2 border-secondary btn-outline rounded-full absolute bottom-8  left-75 text-secondary">
+          <button className="btn btn-primary border-2 border-secondary btn-outline rounded-full absolute md:bottom-8 bottom-0  md:left-75 left-54 text-secondary">
             Be a Rider
           </button>
         </div>

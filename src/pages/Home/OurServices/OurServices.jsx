@@ -52,12 +52,12 @@ const OurServices = () => {
   ];
 
   return (
-    <div className="mt-24 bg-secondary  rounded-2xl p-5 md:p-[100px]">
+    <div className="mt-24 bg-secondary mx-5 rounded-2xl p-5 md:p-[100px]">
       <div className="text-white">
         <h2 className="font-extrabold text-3xl pb-4 text-center">
-          How It Works
+          Our Services
         </h2>
-        <p className="max-w-[718px] mx-auto text-center">
+        <p className="max-w-[718px] px-5 md:px-0 mx-auto text-center">
           Enjoy fast, reliable parcel delivery with real-time tracking and zero
           hassle. From personal packages to business shipments — we deliver on
           time, every time.
