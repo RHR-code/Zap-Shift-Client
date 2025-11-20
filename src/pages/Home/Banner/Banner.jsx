@@ -10,7 +10,7 @@ import { IoArrowUpCircle } from "react-icons/io5";
 const Banner = () => {
   return (
     <div>
-      <Carousel autoPlay={false} infiniteLoop={true}>
+      <Carousel autoPlay={true} infiniteLoop={true}>
         <div className="relative">
           <img src={bannerImg1} />
           <p className="absolute md:bottom-20 md:left-23 text-left max-w-2xl  hidden md:flex">
