@@ -7,9 +7,7 @@ const ReviewCard = ({ review }) => {
     <div className="max-w-sm p-6 bg-white rounded-2xl shadow-sm border border-gray-100">
       <FaQuoteLeft className="text-teal-300 text-2xl mb-3" />
 
-      <p className="text-gray-600 text-sm leading-relaxed mb-6">
-        {testimonial}
-      </p>
+      <p className=" text-sm leading-relaxed mb-6">{testimonial}</p>
 
       <div className="flex items-center gap-3 pt-4 border-t border-dashed border-gray-300">
         <div className="w-8 h-8 bg-teal-800 rounded-full">
