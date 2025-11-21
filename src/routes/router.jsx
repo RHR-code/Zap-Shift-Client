@@ -6,6 +6,9 @@ import {
 import RootLayout from "../layouts/RootLayout";
 import Home from "../pages/Home/Home/Home";
 import Coverage from "../pages/coverage/Coverage";
+import AuthLayout from "../layouts/AuthLayout";
+import Login from "../pages/auth/Login/Login";
+import Register from "../pages/auth/Register/Register";
 
 export const router = createBrowserRouter(
   createRoutesFromElements([
@@ -16,6 +19,10 @@ export const router = createBrowserRouter(
         loader={() => fetch("./serviceCenter.json").then((res) => res.json())}
         Component={Coverage}
       />
+    </Route>,
+    <Route path="/" element={<AuthLayout />}>
+      <Route path="login" Component={Login} />
+      <Route path="register" Component={Register} />
     </Route>,
   ])
 );
