@@ -1,25 +1,38 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import useAuth from "../../../hooks/useAuth";
+import { Link } from "react-router";
+import SocialSignIn from "../SocialSignIn/SocialSignIn";
 
 const Login = () => {
+  const { userLogin } = useAuth();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const handleRegistration = (data) => {
+  const handleLogin = (data) => {
     console.log("after submit", data);
+    userLogin(data.email, data.password)
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
   };
   return (
-    <div>
-      <form onSubmit={handleSubmit(handleRegistration)}>
+    <div className="w-3/4">
+      <h1 className="font-extrabold text-[42px]">Welcome Back</h1>
+      <p className="text-base font-medium py-5">Login with ZapShift</p>
+      <form onSubmit={handleSubmit(handleLogin)}>
         <fieldset className="fieldset">
           {/* email */}
           <label className="label">Email</label>
           <input
             type="email"
             {...register("email", { required: true })}
-            className="input w-3/4"
+            className="input w-full"
             placeholder="Email"
           />
           {errors.email?.type === "required" && (
@@ -32,9 +45,8 @@ const Login = () => {
             {...register("password", {
               required: true,
               minLength: 6,
-              pattern: /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).+$/,
             })}
-            className="input w-3/4"
+            className="input w-full"
             placeholder="Password"
           />
           {errors.password?.type === "required" && (
@@ -45,17 +57,19 @@ const Login = () => {
               Password must be 6 character or longer
             </p>
           )}
-          {errors.password?.type === "pattern" && (
-            <p className="text-red-500">
-              The password should have at least one uppercase , one lowercase
-              and one digit
-            </p>
-          )}
-
           <div>
             <a className="link link-hover">Forgot password?</a>
           </div>
-          <button className="btn btn-neutral mt-4 w-3/4">Login</button>
+          <button className="btn btn-neutral mt-4 w-full">Login</button>
+          <SocialSignIn />
+          <div>
+            <p>
+              New to ZapShift?
+              <Link to="/register" className="text-blue-500 underline">
+                Register
+              </Link>
+            </p>
+          </div>
         </fieldset>
       </form>
     </div>
