@@ -9,6 +9,8 @@ import Coverage from "../pages/coverage/Coverage";
 import AuthLayout from "../layouts/AuthLayout";
 import Login from "../pages/auth/Login/Login";
 import Register from "../pages/auth/Register/Register";
+import Rider from "../pages/rider/rider";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter(
   createRoutesFromElements([
@@ -18,6 +20,14 @@ export const router = createBrowserRouter(
         path="coverage"
         loader={() => fetch("./serviceCenter.json").then((res) => res.json())}
         Component={Coverage}
+      />
+      <Route
+        path="rider"
+        element={
+          <PrivateRoute>
+            <Rider />
+          </PrivateRoute>
+        }
       />
     </Route>,
     <Route path="/" element={<AuthLayout />}>

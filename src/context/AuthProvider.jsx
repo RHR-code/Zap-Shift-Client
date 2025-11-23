@@ -37,15 +37,15 @@ const AuthProvider = ({ children }) => {
   };
   // user logout
   const userLogout = () => {
+    setLoading(true);
     return signOut(auth);
   };
 
   // observer user
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      if (currentUser) {
-        setUser(currentUser);
-      }
+      setUser(currentUser);
+      setLoading(false);
     });
     return () => {
       unsubscribe();

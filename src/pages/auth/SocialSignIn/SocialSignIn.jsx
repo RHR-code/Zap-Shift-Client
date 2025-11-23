@@ -1,12 +1,16 @@
 import React from "react";
 import useAuth from "../../../hooks/useAuth";
+import { useLocation, useNavigate } from "react-router";
 
 const SocialSignIn = () => {
   const { googleLogin } = useAuth();
+  const { state } = useLocation();
+  const navigate = useNavigate();
   const handleGoogleLogin = () => {
     googleLogin()
       .then((data) => {
         console.log(data);
+        navigate(state ? state : "/");
       })
       .catch((error) => {
         console.log(error);
@@ -15,6 +19,7 @@ const SocialSignIn = () => {
   return (
     <div className="w-full">
       <button
+        type="button"
         onClick={handleGoogleLogin}
         className="btn w-full bg-white text-black border-[#e5e5e5]"
       >
