@@ -45,6 +45,8 @@ const SendParcel = () => {
       }
     }
     console.log("cost", cost);
+    // cost
+    data.cost = cost;
     Swal.fire({
       title: "Do you agree with the cost?",
       text: `You will be charged ${cost} taka !`,
@@ -57,7 +59,7 @@ const SendParcel = () => {
       if (result.isConfirmed) {
         axiosSecure.post("/parcels", data).then((res) => {
           console.log(res.data);
-          if (res.insertedId) {
+          if (res.data.insertedId) {
             Swal.fire({
               title: "Successful!",
               text: "Parcel submitted successfully.",
