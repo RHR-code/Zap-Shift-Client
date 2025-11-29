@@ -15,7 +15,7 @@ const UsersManagement = () => {
     },
   });
 
-  const handleUserRole = (user, role) => {
+  const handleMakeAdmin = (user, role) => {
     const roleInfo = { role: role };
 
     Swal.fire({
@@ -28,7 +28,7 @@ const UsersManagement = () => {
       confirmButtonText: "Yes, Change Role!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosSecure.patch(`/users/${user._id}`, roleInfo).then((res) => {
+        axiosSecure.patch(`/users/${user._id}/role`, roleInfo).then((res) => {
           console.log(res.data);
 
           if (res.data.modifiedCount) {
@@ -85,14 +85,14 @@ const UsersManagement = () => {
                 <td>
                   {user.role === "admin" ? (
                     <button
-                      onClick={() => handleUserRole(user, "user")}
+                      onClick={() => handleMakeAdmin(user, "user")}
                       className="btn bg-red-400"
                     >
                       <FiShieldOff />
                     </button>
                   ) : (
                     <button
-                      onClick={() => handleUserRole(user, "admin")}
+                      onClick={() => handleMakeAdmin(user, "admin")}
                       className="btn bg-green-400"
                     >
                       <FaUserShield />
