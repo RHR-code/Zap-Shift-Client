@@ -17,10 +17,8 @@ const Login = () => {
     formState: { errors },
   } = useForm();
   const handleLogin = (data) => {
-    console.log("after submit", data);
     userLogin(data.email, data.password)
       .then((data) => {
-        console.log(data);
         navigate(state ? state : "/");
       })
       .catch((error) => {

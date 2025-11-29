@@ -1,5 +1,6 @@
 import React from "react";
-import { FaProductHunt } from "react-icons/fa";
+import { AiFillCreditCard } from "react-icons/ai";
+import { FaMotorcycle, FaProductHunt, FaUser } from "react-icons/fa";
 import { Link, NavLink, Outlet } from "react-router";
 
 const DashboardLayout = () => {
@@ -71,6 +72,7 @@ const DashboardLayout = () => {
                 </Link>
               </li>
               {/* My dashboard link */}
+              {/* parcels */}
               <li>
                 <NavLink
                   className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
@@ -79,6 +81,45 @@ const DashboardLayout = () => {
                 >
                   <FaProductHunt />
                   <span className="is-drawer-close:hidden">My Parcels</span>
+                </NavLink>
+              </li>
+              {/* history */}
+              <li>
+                <NavLink
+                  className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                  data-tip="History"
+                  to="/dashboard/payment-history"
+                >
+                  <AiFillCreditCard />
+                  <span className="is-drawer-close:hidden">
+                    Payment History
+                  </span>
+                </NavLink>
+              </li>
+              {/* Approve Riders */}
+              <li>
+                <NavLink
+                  className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                  data-tip="Approve"
+                  to="/dashboard/approve-riders"
+                >
+                  <FaMotorcycle />
+                  <span className="is-drawer-close:hidden">
+                    Payment History
+                  </span>
+                </NavLink>
+              </li>
+              {/* Users Management */}
+              <li>
+                <NavLink
+                  className="is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                  data-tip="Users Management"
+                  to="/dashboard/users-management"
+                >
+                  <FaUser />
+                  <span className="is-drawer-close:hidden">
+                    Users Management
+                  </span>
                 </NavLink>
               </li>
 

@@ -8,7 +8,7 @@ import WhatWeOffer from "../WhatWeOffer/WhatWeOffer";
 import Priority from "../Priority/Priority";
 import FAQ from "../FAQ/FAQ";
 
-const reviewsPromise = fetch("./reviews.json").then((res) => res.json());
+const reviewsPromise = fetch("/reviews.json").then((res) => res.json());
 const Home = () => {
   return (
     <div>

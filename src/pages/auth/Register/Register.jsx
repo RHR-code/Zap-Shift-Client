@@ -4,18 +4,19 @@ import useAuth from "../../../hooks/useAuth";
 import { Link, useLocation, useNavigate } from "react-router";
 import SocialSignIn from "../SocialSignIn/SocialSignIn";
 import axios from "axios";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const Register = () => {
   const { userRegister, updateUserProfile } = useAuth();
   const { state } = useLocation();
   const navigate = useNavigate();
+  const axiosSecure = useAxiosSecure();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
   const handleRegister = (data) => {
-    console.log();
     const userImage = data.photo[0];
     userRegister(data.email, data.password)
       .then((response) => {
@@ -29,15 +30,23 @@ const Register = () => {
         axios
           .post(imgbbUrl, formData)
           .then((res) => {
-            console.log(res.data);
+            const photo = res.data.data.image.url;
+            const userInfo = {
+              email: data.email,
+              displayName: data.name,
+              photoURL: photo,
+            };
+            axiosSecure.post("/users", userInfo).then((res) => {
+              if (res.data.insertedId) {
+              }
+            });
             const userProfile = {
               displayName: data.name,
-              photoURL: res.data.data.image.url,
+              photoURL: photo,
             };
             // update the profile
             updateUserProfile(userProfile)
               .then(() => {
-                console.log("profile updated");
                 navigate(state ? state : "/");
               })
               .catch((error) => {
@@ -47,14 +56,13 @@ const Register = () => {
           .catch((error) => {
             console.log(error.message);
           });
-        console.log("after Registration", response.user);
       })
       .catch((error) => {
         console.log(error);
       });
   };
   return (
-    <div className="w-3/4">
+    <div className="w-3/4 ">
       <h1 className="font-extrabold text-[42px]">Create an Account</h1>
       <p className="text-base font-medium py-5">Register with ZapShift</p>
       <form onSubmit={handleSubmit(handleRegister)}>

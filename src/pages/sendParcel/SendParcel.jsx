@@ -1,16 +1,16 @@
 import React, { use } from "react";
 import { useForm, useWatch } from "react-hook-form";
-import { useLoaderData } from "react-router";
+import { useLoaderData, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import { AuthContext } from "../../context/AuthContext";
 
 const SendParcel = () => {
   const serviceCenter = useLoaderData();
+  const navigate = useNavigate();
   const regionDuplicate = serviceCenter.map((reg) => reg.region);
   const regions = [...new Set(regionDuplicate)];
   const { user } = use(AuthContext);
-  console.log(user.email);
 
   const { register, handleSubmit, control } = useForm();
 
@@ -60,9 +60,10 @@ const SendParcel = () => {
         axiosSecure.post("/parcels", data).then((res) => {
           console.log(res.data);
           if (res.data.insertedId) {
+            navigate("/dashboard/my-parcels");
             Swal.fire({
               title: "Successful!",
-              text: "Parcel submitted successfully.",
+              text: "Parcel has created! please pay.",
               icon: "success",
             });
           }
