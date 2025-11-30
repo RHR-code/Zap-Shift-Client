@@ -77,6 +77,7 @@ const MyParcels = () => {
               <th>Name</th>
               <th>Cost</th>
               <th>Payment</th>
+              <th>Tracking Id</th>
               <th>Delivery Status</th>
               <th>Actions</th>
             </tr>
@@ -106,6 +107,7 @@ const MyParcels = () => {
                     </button>
                   )}
                 </td>
+                <td>{parcel.trackingId}</td>
                 <td>{parcel.deliveryStatus}</td>
                 <td>
                   <div className="space-x-3">

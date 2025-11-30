@@ -24,6 +24,7 @@ const PaymentHistory = () => {
           <thead>
             <tr>
               <th></th>
+              <th>Name</th>
               <th>Tracking Number</th>
               <th>Payment Date</th>
               <th>Payment Info</th>
@@ -34,6 +35,7 @@ const PaymentHistory = () => {
             {payments.map((pay, ind) => (
               <tr key={pay._id}>
                 <th>{ind + 1}</th>
+                <td>{pay.title}</td>
                 <td>{pay.transactionId}</td>
                 <td>{pay.paidAt}</td>
                 <td>{pay.amount}</td>
